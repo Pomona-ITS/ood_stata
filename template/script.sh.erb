@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Clean the environment
+module purge
+
+# Set working directory to home directory
+cd "${HOME}"
+
+#xfce
+source "<%= session.staged_root.join("desktops", "#{context.desktop}.sh") %>" 
+#
+# Start program
+#
+
+module load stata/<%= context.pom_stata_versions %>
+
+module list
+set -x
+xstata
+#copied from https://osc.github.io/ood-documentation/latest/tutorials/tutorials-interactive-apps/troubleshooting.html
+stata_pid=$( pgrep -u "$USER" 'xstata' | tail )
+# As long as the PID directory exists we wait
+while [[ -d "/proc/$stata_pid" ]]; do
+  sleep 1
+done
