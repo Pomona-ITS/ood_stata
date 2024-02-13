@@ -16,9 +16,9 @@ module load stata/<%= context.pom_stata_versions %>
 
 module list
 set -x
-xstata
+xstata-se
 #copied from https://osc.github.io/ood-documentation/latest/tutorials/tutorials-interactive-apps/troubleshooting.html
-stata_pid=$( pgrep -u "$USER" 'xstata' | tail )
+stata_pid=$( pgrep -u "$USER" 'xstata-se' | tail )
 # As long as the PID directory exists we wait
 while [[ -d "/proc/$stata_pid" ]]; do
   sleep 1
