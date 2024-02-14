@@ -8,7 +8,7 @@ script:
     - "--time"
     - "0-<%= pom_num_hours %>"
     - "--cpus-per-task=2"
-    - "--mem=8G"
+    - "--mem=32G"
     <%- unless bc_email_on_started.to_i == 0 -%>
     - "--mail-type=BEGIN"
     - "--mail-user=<%= ENV['USER'] %>@pomona.edu,<%= ENV['USER'] %>@mymail.pomona.edu"
